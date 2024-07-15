@@ -2,6 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using ProductsAPI.Middleware;
 using ProductsAPI.Models;
 using ProductsAPI.Extension;
+using System.Reflection;
+using Microsoft.AspNetCore.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +15,9 @@ opt.UseInMemoryDatabase("ProductList"));
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddServicesDI();
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
+
 
 var app = builder.Build();
 
